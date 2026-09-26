@@ -1,0 +1,11 @@
+# Private distillation inputs never belong in this repository.
+private/
+profiles/
+*.jsonl
+.env
+.env.*
+*.sqlite*
+*.db
+.DS_Store
+__pycache__/
+*.pyc

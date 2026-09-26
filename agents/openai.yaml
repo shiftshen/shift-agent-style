@@ -1,0 +1,6 @@
+interface:
+  display_name: "Shift 协作风格"
+  short_description: "应用 Shift 的长期协作要求与纠错规则，减少重复犯错并完成真实交付"
+  default_prompt: "使用 $colleague-shift 的协作规则执行当前任务，遵守本轮范围并给出真实验证结果。"
+policy:
+  allow_implicit_invocation: true
