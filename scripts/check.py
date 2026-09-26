@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ALLOWED = {"SKILL.md", "SHIFT_AGENT_PREFERENCES.md", "README.md", "EVALUATION.md",
            "LICENSE", ".gitignore", "agents/openai.yaml", "scripts/check.py",
-           ".github/workflows/check.yml"}
+           "scripts/delivery_check.py", ".github/workflows/check.yml"}
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)

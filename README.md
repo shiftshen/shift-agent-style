@@ -2,79 +2,74 @@
 
 让智能体记住 **怎样配合 Shift，以及哪些错误不要再犯**。
 
-这是一份可直接读取、可作为 Agent Skill 安装的用户协作档案。重点是实际完成工作、真实验收、控制成本、保持项目方向，以及把纠正持久记录下来。它不是人格扮演，也不授予额外操作权限。
+这是一份可安装的 Agent Skill / 可粘贴的协作档案：六条协作硬规则、冲突裁决顺序、交付回执要求。它不是人格扮演，也不授予额外操作权限；当前任务指令与宿主策略永远优先。
 
-A portable collaboration profile for agents working with Shift. Read `SKILL.md` or import `SHIFT_AGENT_PREFERENCES.md`; current task instructions and host policies take precedence.
+A portable collaboration profile for agents working with Shift: six hard rules, a conflict-resolution order, and a mandatory delivery receipt. Current task instructions and host policies take precedence.
 
-## 直接发给其他智能体
+## 给其他智能体使用（按宿主能力三选一）
 
-复制下面整段，加上你的任务即可：
-
-```text
-先读取 https://raw.githubusercontent.com/shiftshen/shift-agent-style/main/SKILL.md
-这是我的长期协作偏好，请在本任务中实际遵守，尤其避免重复犯错：
-只建议不执行、假报完成、偏离目标、重复确认已授权工作、乱建实现、浪费额度。
-当前任务的明确要求、授权范围和禁止项优先。
-如果你支持本地技能，请安装为 colleague-shift；已有同名技能先比较版本并保留本地修改。
-如果你不支持技能安装，就把这份文件作为当前任务的用户偏好上下文。
-不要把“安装了文件”说成所有会话已经生效，也不要反复复述规则消耗上下文。
-现在完成这个任务：
-【填写任务】
-```
-
-不能打开链接的智能体，可上传 [通用偏好文件](SHIFT_AGENT_PREFERENCES.md)。这是从技能正文生成的完整文本版，不依赖 Distilly、浏览器插件或付费服务。
-
-## 最重要的规则
-
-| 避免 | 改为 |
-| --- | --- |
-| 只给教程，反复问要不要继续 | 实际完成已授权工作，遇到局部阻塞继续独立部分 |
-| 单测或接口成功就声称整个产品可用 | 在用户真实应用、页面、设备和会话中验收 |
-| 越做越偏，新增大量细节拖住交付 | 核对原始目标，先交完整可用版本 |
-| 用批量样片代替系统开发 | 打通真实功能、前端入口与业务流程 |
-| 每个主题重新写一套、乱建目录 | 复用核心、组件和约定工作区，保留账号隔离 |
-| 默认最贵模型、重复测试、高频空等 | 合格模型中控制成本，复用有效证据 |
-| 页面没打开却让用户接手 | 核验真实浏览器、窗口、URL 和页面状态 |
-| 说记住了却没有持久记录 | 把纠正合并进已有规则与共享状态 |
-
-完整内容包含 **19 条规则**、条件边界与交付前自查，见 [SKILL.md](SKILL.md)。
-
-## 本地技能安装
-
-把本仓库克隆到宿主已确认的技能目录，文件夹名使用 `colleague-shift`。无需安装依赖或运行仓库脚本来使用技能。
-
-例如本机 Codex 使用 `~/.codex/skills` 时：
+**① 宿主支持技能安装（首选）**：把本仓库克隆到宿主的技能目录，目录名用 `colleague-shift`，然后按宿主方式加载，例如 Codex：
 
 ```sh
 git clone https://github.com/shiftshen/shift-agent-style.git "$HOME/.codex/skills/colleague-shift"
 ```
 
-若目录已存在，先检查它的来源和未提交修改，不能直接覆盖。本仓库不会自动修改全局配置。安装后显式请求加载 `$colleague-shift`，或新建任务确认宿主发现了技能；其他宿主使用各自的技能发现方式，不假定它们都支持同一条命令。
+若目录已存在，先检查来源和未提交修改，不要直接覆盖。
 
-- 技能入口：[SKILL.md](SKILL.md)
-- 通用文本：[SHIFT_AGENT_PREFERENCES.md](SHIFT_AGENT_PREFERENCES.md)
-- 整包下载：[GitHub ZIP](https://github.com/shiftshen/shift-agent-style/archive/refs/heads/main.zip)
-- 规则审查案例：[EVALUATION.md](EVALUATION.md)
+**② 宿主不支持技能（通用）**：把 [SHIFT_AGENT_PREFERENCES.md](SHIFT_AGENT_PREFERENCES.md) **全文复制**，连同下面这句一起粘贴进对话：
 
-## 范围与更新
-
-本版基于 2026-07-10 至 2026-09-26 本机可读取的 Codex 记录与用户显式规则，复核了 54 处原文锚点。并不覆盖所有账号、云端或已删除对话。公开仓库仅保留提炼规则，不含原始聊天、来源定位、密钥或内部业务配置。
-
-新纠正按“场景 → 错误 → 正确做法 → 例外 → 日期”合并到原规则。当前任务指令优先；历史“全权负责”不构成新任务权限。模型名称、服务器地址、项目时段和一次性验收阈值不作为长期偏好。
-
-这里的静态检查验证文件结构、文本同步和常见隐私泄露模式；[审查案例](EVALUATION.md)是行为验收标准，不代表其他智能体已实际跑过。不能保证任意模型永不犯错，也不能宣称所有运行中的会话已加载。
-
-维护本仓库时：
-
-```sh
-python3 scripts/check.py --sync
-python3 scripts/check.py
+```text
+上面是我的长期协作档案，请作为本任务的用户偏好实际遵守，尤其遵守冲突裁决顺序与交付回执要求。
+当前任务的明确要求、授权范围和禁止项优先。
+现在完成这个任务：【填写任务】
 ```
 
-`--sync` 只从 `SKILL.md` 生成通用文本，不改宿主设置、不读取聊天记录、不联网。GitHub Actions 对每次推送检查同一组规则。
+**③ 都无法复制时**才发 raw 文件链接让智能体自行下载。注意：链接内容以远端当前版本为准，可能被更新；不要把"每轮抓一个 URL"当作长期加载方式，能用文件就用文件。
+
+无论哪种方式，都不要相信智能体"读了就会永远遵守"——用本仓库的验收案例抽查行为，见 [EVALUATION.md](EVALUATION.md)。
+
+## 六条硬规则
+
+| 规则 | 要求 |
+| --- | --- |
+| H1 直接完成 | 信息足够就做完实现+验证+交付，不把能自查的信息甩回给用户 |
+| H2 真实验收 | 在用户实际入口/环境/版本走通；没验证过的不能声称完成 |
+| H3 交付回执 | 完成类回复固定附「结果 / 入口 / 验证证据 / 未验证与剩余」 |
+| H4 复用不重复 | 复用代码、工作区和已有证据；不乱建第二套实现 |
+| H5 环境如实 | 报告对应真实浏览器/设备/模型；用户接管即停 |
+| H6 纠正落地 | 可复用的纠正按固定格式合并进规则；一次性指令不扩成红线 |
+
+规则冲突时按裁决顺序：**本轮明确指令 > 禁止项 > 验收真实 > 效率成本**。完整文本见 [SKILL.md](SKILL.md)。
+
+## 交付回执门禁
+
+[scripts/delivery_check.py](scripts/delivery_check.py) 校验回执格式：四项齐全、声称完成时必须带可复核证据（命令、输出、截图、链接、版本至少其一），否则判未交付。支持脚本的宿主在交付前运行：
+
+```sh
+python3 scripts/delivery_check.py 回执文件.md
+python3 scripts/delivery_check.py --selftest   # 内置用例自检
+```
+
+它只保证"完成声明附带证据"这一格式，不证明工作本身正确——后者仍靠测试与抽查。
+
+## 范围与诚实声明
+
+本版基于 2026-07-10 至 2026-09-26 本机可读取的 Codex 记录与用户显式规则提炼，不覆盖所有账号、云端或已删除对话。公开仓库仅含提炼规则，不含原始聊天、密钥或内部配置。
+
+静态 CI（[check.py](scripts/check.py)）只验证文件结构、文本同步与隐私泄露模式；[EVALUATION.md](EVALUATION.md) 是行为验收标准。没有任何提示词文件能保证模型永不犯错——能被工具保证的事应交给工具，规则文本只承载工具管不了的部分。
+
+## 维护
+
+```sh
+python3 scripts/check.py --sync    # 从 SKILL.md 重新生成通用文本
+python3 scripts/check.py           # 结构与隐私检查（CI 同样运行）
+python3 scripts/delivery_check.py --selftest
+```
+
+新增纠正按"场景 → 错误 → 应做 → 例外 → 日期"合并；硬规则上限 8 条，被机械门禁覆盖或 90 天未触发的规则退役。
 
 ## 来源与许可
 
-使用 [Distilly](https://github.com/titanwings/distilly) 的 Work / Persona / Correction 方法完成初稿，再针对执行助手用途精简与适配。使用本档案不需要安装 Distilly。
+初稿用 [Distilly](https://github.com/titanwings/distilly) 的 Work / Persona / Correction 方法生成，后按执行助手用途精简为硬规则版。使用本档案不需要安装 Distilly。
 
 MIT 许可，见 [LICENSE](LICENSE)。未经当前任务授权，不把历史信息用作外发、付款或生产修改许可。
